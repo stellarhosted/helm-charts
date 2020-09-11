@@ -19,6 +19,10 @@ You can then run `helm search repo stellarhosted` to see the charts.
 
 ## Charts
 
+### BookStack
+
+For installation and upgrading instructions see [BookStack chart readme](https://github.com/stellarhosted/helm-charts/blob/main/charts/bookstack/README.md).
+
 ## License
 
 [Apache 2.0 License](./LICENSE).
