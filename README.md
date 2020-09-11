@@ -1,6 +1,7 @@
 # Kubernetes Helm Charts by Stellar Hosted
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![](https://github.com/stellarhosted/helm-charts/workflows/Release%20Charts/badge.svg?branch=main)](https://github.com/stellarhosted/helm-charts/actions)
 
 ## Helm 3
 
