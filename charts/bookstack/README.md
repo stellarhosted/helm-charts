@@ -5,7 +5,7 @@
 ## TL;DR;
 
 ```bash
-$ helm install stable/bookstack
+$ helm install stellarhosted/bookstack
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ It also uses the [MariaDB chart](https://github.com/kubernetes/charts/tree/maste
 To install the chart with the release name `my-release`:
 
 ```bash
-$ helm update --install my-release stable/bookstack
+$ helm update --install my-release stellarhosted/bookstack
 ```
 
 The command deploys Bookstack on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -103,7 +103,7 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 ```bash
 $ helm upgrade --install my-release \
   --set podSecurityPolicy.enabled=true \
-    stable/bookstack
+    stellarhosted/bookstack
 ```
 
 The above command enables podSecurityPolicy.
@@ -111,7 +111,7 @@ The above command enables podSecurityPolicy.
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm upgrade --install my-release -f values.yaml stable/bookstack
+$ helm upgrade --install my-release -f values.yaml stellarhosted/bookstack
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
@@ -141,5 +141,5 @@ The following example includes two PVCs, one for uploads and another for misc. d
 1. Install the chart
 
 ```bash
-$ helm upgrade --install test --set persistence.uploads.existingClaim=PVC_UPLOADS,persistence.storage.existingClaim=PVC_STORAGE stable/bookstack
+$ helm upgrade --install test --set persistence.uploads.existingClaim=PVC_UPLOADS,persistence.storage.existingClaim=PVC_STORAGE stellarhosted/bookstack
 ```
