@@ -16,6 +16,7 @@ jobs:
         run: |
           helm repo add stable https://kubernetes-charts.storage.googleapis.com/
           helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+          helm repo add stellarhosted https://stellarhosted.github.io/helm-charts
           helm repo update
 
       - name: Run chart-testing (lint)
@@ -47,11 +48,12 @@ jobs:
         run: |
           helm repo add stable https://kubernetes-charts.storage.googleapis.com/
           helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+          helm repo add stellarhosted https://stellarhosted.github.io/helm-charts
           helm repo update
 
       - name: Run chart-testing (lint)
         id: lint
-        uses: helm/chart-testing-action@v1.0.0-alpha.3 # fixed on v1.0.0-alpha.3 for helm2
+        uses: helm/chart-testing-action
         with:
           command: lint
 
@@ -61,6 +63,6 @@ jobs:
         if: steps.lint.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        uses: helm/chart-testing-action@v1.0.0-alpha.3 # fixed on v1.0.0-alpha.3 for helm2
+        uses: helm/chart-testing-action@v1.0.0
         with:
           command: install
