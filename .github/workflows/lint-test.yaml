@@ -3,7 +3,7 @@ name: Lint and Test Charts
 on: pull_request
 
 jobs:
-  lint-test-v1.18:
+  lint-test-v1-18:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,7 +30,7 @@ jobs:
         with:
           command: install
 
-  lint-test-v1.17:
+  lint-test-v1-17:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -57,7 +57,7 @@ jobs:
         with:
           command: install
 
-  lint-test-v1.16:
+  lint-test-v1-16:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
