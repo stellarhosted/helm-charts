@@ -30,7 +30,6 @@ jobs:
         with:
           command: install
 
-jobs:
   lint-test-v1.17:
     runs-on: ubuntu-latest
     steps:
@@ -58,7 +57,6 @@ jobs:
         with:
           command: install
 
-jobs:
   lint-test-v1.16:
     runs-on: ubuntu-latest
     steps:
