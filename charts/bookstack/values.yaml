@@ -82,11 +82,6 @@ service:
   type: ClusterIP
   port: 80
 
-# If true, create & use Pod Security Policy resources
-# https://kubernetes.io/docs/concepts/policy/pod-security-policy/
-podSecurityPolicy:
-  enabled: false
-
 ## For RBAC support:
 rbac:
   # Specifies whether RBAC resources should be created

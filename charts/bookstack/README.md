@@ -19,6 +19,10 @@ It also uses the [MariaDB chart](https://github.com/kubernetes/charts/tree/maste
 - Kubernetes 1.9+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
 
+## Changelog
+
+All changes for this chart are kept in the [CHANGELOG.md](CHANGELOG.md)
+
 ## Installing the Chart
 
 To install the chart with the release name `my-release`:
@@ -143,3 +147,4 @@ The following example includes two PVCs, one for uploads and another for misc. d
 ```bash
 $ helm upgrade --install test --set persistence.uploads.existingClaim=PVC_UPLOADS,persistence.storage.existingClaim=PVC_STORAGE stellarhosted/bookstack
 ```
+
