@@ -3,7 +3,7 @@ name: Lint and Test Charts
 on: pull_request
 
 jobs:
-  lint-test-v1-18:
+  lint-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,8 +20,6 @@ jobs:
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
-        with:
-          node_image: kindest/node:v1.18.8
         # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'
 
