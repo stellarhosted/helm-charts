@@ -11,6 +11,11 @@ jobs:
 
       - name: Fetch history
         run: git fetch --prune --unshallow
+        
+      - name: Add dependency chart repos
+        run: |
+          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+          helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 
       - name: Run chart-testing (lint)
         id: lint
@@ -36,6 +41,11 @@ jobs:
 
       - name: Fetch history
         run: git fetch --prune --unshallow
+
+      - name: Add dependency chart repos
+        run: |
+          helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+          helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
 
       - name: Run chart-testing (lint)
         id: lint
