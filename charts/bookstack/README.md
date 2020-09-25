@@ -106,11 +106,11 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```bash
 $ helm upgrade --install my-release \
-  --set podSecurityPolicy.enabled=true \
+  --set image.pullPolicy=Always \
     stellarhosted/bookstack
 ```
 
-The above command enables podSecurityPolicy.
+The above command sets the image pull policy to Always.
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
