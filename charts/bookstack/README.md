@@ -19,6 +19,10 @@ It also uses the [MariaDB chart](https://github.com/kubernetes/charts/tree/maste
 - Kubernetes 1.9+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
 
+## Changelog
+
+All changes for this chart are kept in the [CHANGELOG.md](CHANGELOG.md)
+
 ## Installing the Chart
 
 To install the chart with the release name `my-release`:
@@ -50,7 +54,7 @@ The following table lists the configurable parameters of the Redmine chart and t
 | `env`                             | additional env variables                 | `{}`                                                     |
 | `replicaCount`                    | Number of replicas to start              | `1`                                                     |
 | `image.repository`                | Bookstack image name                     | `solidnerd/bookstack`                                   |
-| `image.tag`                       | Bookstack image tag                      | `0.27.5`                                                |
+| `image.tag`                       | Bookstack image tag                      | `0.29.3`                                                |
 | `image.pullPolicy`                | Bookstack image pull policy              | `IfNotPresent`                                          |
 | `externalDatabase.host`           | Host of the external database            | `nil`                                                   |
 | `externalDatabase.port`           | Port of the external database            | `3306`                                                  |
@@ -102,11 +106,11 @@ Specify each parameter using the `--set key=value[,key=value]` argument to `helm
 
 ```bash
 $ helm upgrade --install my-release \
-  --set podSecurityPolicy.enabled=true \
+  --set image.pullPolicy=Always \
     stellarhosted/bookstack
 ```
 
-The above command enables podSecurityPolicy.
+The above command sets the image pull policy to Always.
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
 
@@ -143,3 +147,4 @@ The following example includes two PVCs, one for uploads and another for misc. d
 ```bash
 $ helm upgrade --install test --set persistence.uploads.existingClaim=PVC_UPLOADS,persistence.storage.existingClaim=PVC_STORAGE stellarhosted/bookstack
 ```
+
