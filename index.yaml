@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   bookstack:
   - apiVersion: v1
+    appVersion: 0.30.4
+    created: "2021-01-24T18:38:57.029978331Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.2.x
+    description: BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information.
+    digest: c623727d4151479e44c9f230769f83482b528f4ac2b35358b8bc3d77629ad53a
+    home: https://www.bookstackapp.com/
+    icon: https://github.com/BookStackApp/website/blob/master/static/images/logo.png
+    maintainers:
+    - email: bart@verwilst.be
+      name: verwilst
+    - email: e-mail@baskoopmans.nl
+      name: baskoopmans
+    name: bookstack
+    sources:
+    - https://github.com/BookStackApp/BookStack
+    urls:
+    - https://github.com/stellarhosted/helm-charts/releases/download/bookstack-1.4.1/bookstack-1.4.1.tgz
+    version: 1.4.1
+  - apiVersion: v1
     appVersion: 0.29.3
     created: "2021-01-24T18:15:10.205314317Z"
     dependencies:
