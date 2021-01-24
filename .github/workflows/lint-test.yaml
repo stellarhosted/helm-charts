@@ -11,13 +11,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup chart-testing
+        uses: helm/chart-testing-action@v2.0.1
+
       - name: Debug
         run: |
           ls
+          cat ct.yaml
           ct version
-
-      - name: Setup chart-testing
-        uses: helm/chart-testing-action@v2.0.1
 
       - name: Run chart-testing (list-changed)
         id: list-changed
