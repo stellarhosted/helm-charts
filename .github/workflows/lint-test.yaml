@@ -11,8 +11,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
       - name: Setup chart-testing
-        id: lint
         uses: helm/chart-testing-action@v2.0.1
 
       - name: Run chart-testing (list-changed)
@@ -43,8 +51,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
       - name: Setup chart-testing
-        id: lint
         uses: helm/chart-testing-action@v2.0.1
 
       - name: Run chart-testing (list-changed)
@@ -75,8 +91,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
       - name: Setup chart-testing
-        id: lint
         uses: helm/chart-testing-action@v2.0.1
 
       - name: Run chart-testing (list-changed)
@@ -107,8 +131,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
       - name: Setup chart-testing
-        id: lint
         uses: helm/chart-testing-action@v2.0.1
 
       - name: Run chart-testing (list-changed)
