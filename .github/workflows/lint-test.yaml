@@ -18,6 +18,7 @@ jobs:
         id: list-changed
         run: |
           changed=$(ct list-changed --config ct.yaml)
+          echo $changed
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
@@ -49,6 +50,7 @@ jobs:
         id: list-changed
         run: |
           changed=$(ct list-changed --config ct.yaml)
+          echo $changed
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
@@ -80,6 +82,7 @@ jobs:
         id: list-changed
         run: |
           changed=$(ct list-changed --config ct.yaml)
+          echo $changed
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
@@ -111,6 +114,7 @@ jobs:
         id: list-changed
         run: |
           changed=$(ct list-changed --config ct.yaml)
+          echo $changed
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
