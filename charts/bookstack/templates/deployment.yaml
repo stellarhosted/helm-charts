@@ -13,12 +13,18 @@ spec:
     matchLabels:
       app: {{ template "bookstack.name" . }}
       release: {{ .Release.Name }}
+{{- if .Values.deploymentStrategy }}
+  strategy:
+{{ toYaml .Values.deploymentStrategy | indent 4 }}
+{{- end }}
   template:
     metadata:
       labels:
         app: {{ template "bookstack.name" . }}
         release: {{ .Release.Name }}
     spec:
+      securityContext:
+{{ toYaml .Values.securityContext | indent 8 }}
       serviceAccountName: {{ template "bookstack.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}

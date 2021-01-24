@@ -4,10 +4,17 @@
 
 replicaCount: 1
 
+# This will use the default deployment strategy unless it is overridden
+deploymentStrategy: {}
+
 image:
   repository: solidnerd/bookstack
-  tag: 0.29.3
+  tag: 0.30.4
   pullPolicy: IfNotPresent
+
+# Set security context for bookstack pod
+securityContext:
+  fsGroup: 33  # www-data
 
 app:
   # Laravel APP_KEY. Generate one with `php artisan key:generate` and put here if you want a static key.
