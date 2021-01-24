@@ -12,7 +12,7 @@ image:
   tag: 0.30.4
   pullPolicy: IfNotPresent
 
-Set security context for bookstack pod
+# Set security context for bookstack pod
 securityContext:
   fsGroup: 33  # www-data
 
