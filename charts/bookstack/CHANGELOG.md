@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.0] - 2021-01-25
 
-## Changed
+### Changed
 
 - MariaDB chart version from stable 4.4.x to bitnami 9.2.x (backwards incompatible) 
 
