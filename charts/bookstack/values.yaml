@@ -9,7 +9,7 @@ deploymentStrategy: {}
 
 image:
   repository: solidnerd/bookstack
-  tag: 0.29.3
+  tag: 0.30.4
   pullPolicy: IfNotPresent
 
 app:
