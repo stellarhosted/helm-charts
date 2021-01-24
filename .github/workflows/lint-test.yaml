@@ -8,9 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
+        with:
+          fetch-depth: 0
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
@@ -24,16 +23,17 @@ jobs:
       - name: Setup chart-testing
         uses: helm/chart-testing-action@v2.0.1
 
+      - name: Run chart-testing (lint)
+        run: ct lint
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
+          ct list-changed
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
-
-      - name: Run chart-testing (lint)
-        run: ct lint
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
@@ -49,18 +49,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
-
-      - name: Set up Helm
-        uses: azure/setup-helm@v1
         with:
-          version: v3.4.0
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
+          fetch-depth: 0
 
       - name: Setup chart-testing
         uses: helm/chart-testing-action@v2.0.1
@@ -90,18 +80,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
-
-      - name: Set up Helm
-        uses: azure/setup-helm@v1
         with:
-          version: v3.4.0
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
+          fetch-depth: 0
 
       - name: Setup chart-testing
         uses: helm/chart-testing-action@v2.0.1
@@ -131,18 +111,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
-
-      - name: Set up Helm
-        uses: azure/setup-helm@v1
         with:
-          version: v3.4.0
-
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
+          fetch-depth: 0
 
       - name: Setup chart-testing
         uses: helm/chart-testing-action@v2.0.1
