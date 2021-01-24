@@ -64,7 +64,7 @@ mariadb:
   ## Enable persistence using Persistent Volume Claims
   ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
   ##
-  master:
+  primary:
     persistence:
       enabled: false
       ## mariadb data Persistent Volume Storage Class
