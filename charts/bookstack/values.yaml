@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+ # This will use the default deployment strategy unless it is overriden
+deploymentStrategy: {}
+
 image:
   repository: solidnerd/bookstack
   tag: 0.29.3
