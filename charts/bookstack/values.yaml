@@ -42,41 +42,38 @@ mariadb:
   enabled: true
 
   ## Disable MariaDB replication
-  replication:
-    enabled: false
+  architecture: standalone
 
   ## Create a database and a database user
   ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
   ##
-  db:
-    name: bookstack
-    user: bookstack
+  auth:
+    database: bookstack
+    username: bookstack
     ## If the password is not specified, mariadb will generates a random password
     ##
     # password:
 
-  ## MariaDB admin password
-  ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
-  ##
-  # rootUser:
-  #   password:
+    ## MariaDB admin password
+    ## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
+    ##
+    # rootPassword:
 
   ## Enable persistence using Persistent Volume Claims
   ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
   ##
-  master:
+  primary:
     persistence:
       enabled: false
       ## mariadb data Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
       ## If set to "-", storageClassName: "", which disables dynamic provisioning
       ## If undefined (the default) or set to null, no storageClassName spec is
-      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-      ##   GKE, AWS & OpenStack)
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on GKE, AWS & OpenStack)
       ##
       # storageClass: "-"
-      accessMode: ReadWriteOnce
-      size: 8Gi
+      # accessModes: [ReadWriteOnce]
+      # size: 8Gi
 
 service:
   type: ClusterIP
