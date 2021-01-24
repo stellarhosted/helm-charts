@@ -9,10 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
- - Option to configure deployment strategy
+- Option to configure deployment strategy
 
 ## [1.3.0] - 2020-09-25
 
 ### Changed
 
- - Update BookStack to version 0.29.3
+- Update BookStack to version 0.29.3
