@@ -48,7 +48,7 @@ jobs:
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
         with:
-          node_image: kindest/node:v1.18.8
+          node_image: kindest/node:v1.18.15
         # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'
 
@@ -75,7 +75,7 @@ jobs:
       - name: Create kind cluster
         uses: helm/kind-action@v1.0.0
         with:
-          node_image: kindest/node:v1.17.11
+          node_image: kindest/node:v1.17.17
         # Only build a kind cluster if there are chart changes to test.
         if: steps.lint.outputs.changed == 'true'
 
