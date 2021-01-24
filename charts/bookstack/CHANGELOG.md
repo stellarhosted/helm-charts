@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Option to configure deployment strategy
 
+### Fixed
+
+- Fix file uploads by changing the group to www-data for upload directories
+
+
 ## [1.4.0] - 2021-01-24
 
 ### Changed

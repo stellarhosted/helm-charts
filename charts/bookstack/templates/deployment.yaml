@@ -23,6 +23,8 @@ spec:
         app: {{ template "bookstack.name" . }}
         release: {{ .Release.Name }}
     spec:
+      securityContext:
+{{ toYaml .Values.securityContext | indent 8 }}
       serviceAccountName: {{ template "bookstack.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
