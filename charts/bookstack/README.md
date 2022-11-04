@@ -1,4 +1,4 @@
-# Bookstack
+# Bookstack - open source wiki
 
 [Bookstack](https://www.bookstackapp.com) is a simple, easy-to-use platform for organising and storing information.
 
@@ -16,7 +16,7 @@ It also uses the [MariaDB chart](https://github.com/kubernetes/charts/tree/maste
 
 ## Prerequisites
 
-- Kubernetes 1.9+ with Beta APIs enabled
+- Kubernetes 1.22+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
 
 ## Changelog
