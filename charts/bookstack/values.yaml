@@ -19,6 +19,7 @@ fullnameOverride: ""
 
 app:
   key: ""
+  url: ""
 
 serviceAccount:
   # Specifies whether a ServiceAccount should be created

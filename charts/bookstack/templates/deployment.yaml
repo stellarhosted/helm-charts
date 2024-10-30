@@ -89,6 +89,8 @@ spec:
                 secretKeyRef:
                   name: {{ printf "%s-%s" .Release.Name "app" }}
                   key: app-key
+            - name: APP_URL
+              value: {{ required "value app.url is required" .Values.app.url }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key | upper | replace "." "_" }}
               value: {{ $value | quote }}
