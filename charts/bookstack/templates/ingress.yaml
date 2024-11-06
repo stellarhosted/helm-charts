@@ -15,6 +15,7 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
+  ingressClassName: {{ required "value ingress.className is required" .Values.ingress.className }}
 {{- if .Values.ingress.tls }}
   tls:
   {{- range .Values.ingress.tls }}
