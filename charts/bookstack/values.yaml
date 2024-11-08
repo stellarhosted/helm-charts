@@ -94,6 +94,9 @@ externalDatabase:
   ## Database name
   database: bookstack
 
+  ## TLS cert file to setup TLS connection with externalDatabase
+  ## tlsCert: <cert file content>
+
 ##
 ## MariaDB chart configuration
 ##

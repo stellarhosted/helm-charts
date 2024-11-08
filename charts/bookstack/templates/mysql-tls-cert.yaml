@@ -1,0 +1,14 @@
+{{- if .Values.externalDatabase.tlsCert }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ printf "%s-%s" .Release.Name "cert"  }}
+  labels:
+    app: {{ printf "%s-%s" .Release.Name "cert"  }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+type: Opaque
+data:
+  mysql.cert: {{ .Values.externalDatabase.tlsCert | b64enc | quote }}
+{{- end }}
