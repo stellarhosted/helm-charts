@@ -84,13 +84,11 @@ spec:
                   name: {{ printf "%s-%s" .Release.Name "externaldb" }}
                   key: db-password
           {{- end }}
-          {{- if .Values.app.key }}
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ printf "%s-%s" .Release.Name "app" }}
                   key: app-key
-          {{- end }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key | upper | replace "." "_" }}
               value: {{ $value | quote }}
