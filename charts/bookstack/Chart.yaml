@@ -3,7 +3,7 @@ name: bookstack
 description: BookStack is a simple, self-hosted, easy-to-use platform for organising and storing information.
 type: application
 version: 1.6.0
-appVersion: 22.04.02
+appVersion: 25.2
 home: https://www.bookstackapp.com/
 icon: https://media.githubusercontent.com/media/BookStackApp/website/master/static/images/logo.png
 sources:
