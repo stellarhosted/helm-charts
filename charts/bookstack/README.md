@@ -49,58 +49,62 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the Redmine chart and their default values.
 
-|            Parameter              |              Description                 |                          Default                        | 
-| --------------------------------- | ---------------------------------------- | ------------------------------------------------------- |
-| `env`                             | additional env variables                 | `{}`                                                    |
-| `replicaCount`                    | Number of replicas to start              | `1`                                                     |
-| `deploymentStrategy`              | Deployment strategy                      | `{}`                                                    |
-| `securityContext`                 | Pod security context                     | `{'fsGroup': 33}`                                       |
-| `image.repository`                | Bookstack image name                     | `solidnerd/bookstack`                                   |
-| `image.tag`                       | Bookstack image tag                      | `0.30.4`                                                |
-| `image.pullPolicy`                | Bookstack image pull policy              | `IfNotPresent`                                          |
-| `externalDatabase.host`           | Host of the external database            | `nil`                                                   |
-| `externalDatabase.port`           | Port of the external database            | `3306`                                                  |
-| `externalDatabase.user`           | Existing username in the external db     | `bookstack`                                             |
-| `externalDatabase.password`       | Password for the above username          | `nil`                                                   |
-| `externalDatabase.database`       | Name of the existing database            | `bookstack`                                             |
-| `mariadb.enabled`                 | Whether to use the MariaDB chart         | `true`                                                  |
-| `mariadb.auth.database`           | Database to create                       | `bookstack`                                             |
-| `mariadb.auth.username`           | Database user to create                  | `bookstack`                                             |
-| `mariadb.auth.password`           | Password for the database                | `nil`                                                   |
-| `mariadb.auth.rootPassword`       | MariaDB admin password                   | `nil`                                                   |
-| `mariadb.primary.persistence.enabled`        | Enable MariaDB persistence using PVC     | `false`                                                  |
-| `mariadb.primary.persistence.storageClass`   | PVC Storage Class for MariaDB volume     | `nil` (uses alpha storage class annotation)             |
-| `mariadb.primary.persistence.accessModes`     | PVC Access Mode list for MariaDB volume | `[ReadWriteOnce]`                                         |
-| `mariadb.primary.persistence.size`           | PVC Storage Request for MariaDB volume   | `8Gi`                                                   |
-| `service.type`                    | Desired service type                                | `ClusterIP`               |
-| `service.port`                    | Service exposed port                               | `80`                    |
-| `podSecurityPolicy.enabled`	    | Create & use Pod Security Policy resources  | `false`						      |
-| `rbac.create` 		            | Use Role-based Access Control		  | `true`						      |
-| `serviceAccount.create`	         | Should we create a ServiceAccount	          | `true`						      |
-| `serviceAccount.name`		         | Name of the ServiceAccount to use           | `null`					      |
-| `persistence.uploads.enabled`             | Enable persistence using PVC for uploads             | `true`                                      |
-| `persistence.uploads.storageClass`        | PVC Storage Class                        | `nil` (uses alpha storage class annotation)             |
-| `persistence.uploads.accessMode`          | PVC Access Mode                          | `ReadWriteOnce`                                         |
-| `persistence.uploads.size`                | PVC Storage Request                      | `8Gi`                                                   |
-| `persistence.uploads.existingClaim`        | If PVC exists & bounded for uploads   | `nil` (when nil, new one is requested)                  |
-| `persistence.storage.enabled`             | Enable persistence using PVC for uploads             | `true`                                      |
-| `persistence.storage.storageClass`        | PVC Storage Class                        | `nil` (uses alpha storage class annotation)             |
-| `persistence.storage.accessMode`          | PVC Access Mode                          | `ReadWriteOnce`                                         |
-| `persistence.storage.size`                | PVC Storage Request                      | `8Gi`                                                   |
-| `persistence.storage.existingClaim`        | If PVC exists & bounded for storage   | `nil` (when nil, new one is requested)                  |
-| `ingress.enabled`                 | Enable or disable the ingress            | `false`                                                 |
-| `ingress.hosts`                   | The virtual host name(s)                 | `{}`                                 |
-| `ingress.annotations`             | An array of service annotations          | `nil`                                                   |
-| `ingress.tls[i].secretName`       | The secret kubernetes.io/tls             | `nil`                                                   |
-| `ingress.tls[i].hosts[j]`         | The virtual host name                    | `nil`                                                   |
-| `resources`                       | Resources allocation (Requests and Limits) | `{}` |
-| `ldap.enabled`                    | Enable or disable LDAP authentication. [See official docs for details](https://www.bookstackapp.com/docs/admin/ldap-auth/) | `false` |
-| `ldap.server`                    | LDAP server address | `nil` |
-| `ldap.base_dn`                    | Base DN where users will be searched | `nil` |
-| `ldap.dn`                    | User which will make search queries. Leave empty to search anonymously. | `nil` |
-| `ldap.pass`                    | Password of user performing search queries.  | `nil` |
-| `ldap.userFilter`                    | A filter to use when searching for users | `nil` |
-| `ldap.version`                    | Set the LDAP version to use when connecting to the server. Required especially when using AD. | `nil` |
+| Parameter                                  | Description                                                                                                                | Default                                     |
+|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| `env`                                      | additional env variables                                                                                                   | `{}`                                        |
+| `replicaCount`                             | Number of replicas to start                                                                                                | `1`                                         |
+| `deploymentStrategy`                       | Deployment strategy                                                                                                        | `{}`                                        |
+| `securityContext`                          | Pod security context                                                                                                       | `{'fsGroup': 33}`                           |
+| `app.key`                                  | Laravel app key. `base64:<b64 encoded string of 16 or 32 bytes>`.                                                          | mandatory                                   |
+| `app.url`                                  | URL used to connect to boostack                                                                                            | mandatory                                   |
+| `image.repository`                         | Bookstack image name                                                                                                       | `solidnerd/bookstack`                       |
+| `image.tag`                                | Bookstack image tag                                                                                                        | `0.30.4`                                    |
+| `image.pullPolicy`                         | Bookstack image pull policy                                                                                                | `IfNotPresent`                              |
+| `externalDatabase.host`                    | Host of the external database                                                                                              | `nil`                                       |
+| `externalDatabase.port`                    | Port of the external database                                                                                              | `3306`                                      |
+| `externalDatabase.user`                    | Existing username in the external db                                                                                       | `bookstack`                                 |
+| `externalDatabase.password`                | Password for the above username                                                                                            | `nil`                                       |
+| `externalDatabase.database`                | Name of the existing database                                                                                              | `bookstack`                                 |
+| `externalDatabase.tlsCert`                 | TLS cert file to setup TLS connection with externalDatabase                                                                | `nil`                                       |
+| `mariadb.enabled`                          | Whether to use the MariaDB chart                                                                                           | `true`                                      |
+| `mariadb.auth.database`                    | Database to create                                                                                                         | `bookstack`                                 |
+| `mariadb.auth.username`                    | Database user to create                                                                                                    | `bookstack`                                 |
+| `mariadb.auth.password`                    | Password for the database                                                                                                  | `nil`                                       |
+| `mariadb.auth.rootPassword`                | MariaDB admin password                                                                                                     | `nil`                                       |
+| `mariadb.primary.persistence.enabled`      | Enable MariaDB persistence using PVC                                                                                       | `false`                                     |
+| `mariadb.primary.persistence.storageClass` | PVC Storage Class for MariaDB volume                                                                                       | `nil` (uses alpha storage class annotation) |
+| `mariadb.primary.persistence.accessModes`  | PVC Access Mode list for MariaDB volume                                                                                    | `[ReadWriteOnce]`                           |
+| `mariadb.primary.persistence.size`         | PVC Storage Request for MariaDB volume                                                                                     | `8Gi`                                       |
+| `service.type`                             | Desired service type                                                                                                       | `ClusterIP`                                 |
+| `service.port`                             | Service exposed port                                                                                                       | `80`                                        |
+| `podSecurityPolicy.enabled`                | Create & use Pod Security Policy resources                                                                                 | `false`                                     |
+| `rbac.create`                              | Use Role-based Access Control                                                                                              | `true`                                      |
+| `serviceAccount.create`                    | Should we create a ServiceAccount                                                                                          | `true`                                      |
+| `serviceAccount.name`                      | Name of the ServiceAccount to use                                                                                          | `null`                                      |
+| `persistence.uploads.enabled`              | Enable persistence using PVC for uploads                                                                                   | `true`                                      |
+| `persistence.uploads.storageClass`         | PVC Storage Class                                                                                                          | `nil` (uses alpha storage class annotation) |
+| `persistence.uploads.accessMode`           | PVC Access Mode                                                                                                            | `ReadWriteOnce`                             |
+| `persistence.uploads.size`                 | PVC Storage Request                                                                                                        | `8Gi`                                       |
+| `persistence.uploads.existingClaim`        | If PVC exists & bounded for uploads                                                                                        | `nil` (when nil, new one is requested)      |
+| `persistence.storage.enabled`              | Enable persistence using PVC for uploads                                                                                   | `true`                                      |
+| `persistence.storage.storageClass`         | PVC Storage Class                                                                                                          | `nil` (uses alpha storage class annotation) |
+| `persistence.storage.accessMode`           | PVC Access Mode                                                                                                            | `ReadWriteOnce`                             |
+| `persistence.storage.size`                 | PVC Storage Request                                                                                                        | `8Gi`                                       |
+| `persistence.storage.existingClaim`        | If PVC exists & bounded for storage                                                                                        | `nil` (when nil, new one is requested)      |
+| `ingress.enabled`                          | Enable or disable the ingress                                                                                              | `false`                                     |
+| `ingress.className`                        | Ingress class name                                                                                                         | mandatory if `ingress.enabled` is true      |
+| `ingress.hosts`                            | The virtual host name(s)                                                                                                   | `{}`                                        |
+| `ingress.annotations`                      | An array of service annotations                                                                                            | `nil`                                       |
+| `ingress.tls[i].secretName`                | The secret kubernetes.io/tls                                                                                               | `nil`                                       |
+| `ingress.tls[i].hosts[j]`                  | The virtual host name                                                                                                      | `nil`                                       |
+| `resources`                                | Resources allocation (Requests and Limits)                                                                                 | `{}`                                        |
+| `ldap.enabled`                             | Enable or disable LDAP authentication. [See official docs for details](https://www.bookstackapp.com/docs/admin/ldap-auth/) | `false`                                     |
+| `ldap.server`                              | LDAP server address                                                                                                        | `nil`                                       |
+| `ldap.base_dn`                             | Base DN where users will be searched                                                                                       | `nil`                                       |
+| `ldap.dn`                                  | User which will make search queries. Leave empty to search anonymously.                                                    | `nil`                                       |
+| `ldap.pass`                                | Password of user performing search queries.                                                                                | `nil`                                       |
+| `ldap.userFilter`                          | A filter to use when searching for users                                                                                   | `nil`                                       |
+| `ldap.version`                             | Set the LDAP version to use when connecting to the server. Required especially when using AD.                              | `nil`                                       |
 
 The above parameters map to the env variables defined in the [Bookstack image](https://hub.docker.com/r/solidnerd/bookstack/) and the MariaDB/MySQL database settings. For more information please refer to the [Bookstack](https://hub.docker.com/r/solidnerd/bookstack/) image documentation.
 

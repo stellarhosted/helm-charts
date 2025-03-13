@@ -17,6 +17,10 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+app:
+  key: ""
+  url: ""
+
 serviceAccount:
   # Specifies whether a ServiceAccount should be created
   create: true
@@ -89,6 +93,9 @@ externalDatabase:
 
   ## Database name
   database: bookstack
+
+  ## TLS cert file to setup TLS connection with externalDatabase
+  ## tlsCert: <cert file content>
 
 ##
 ## MariaDB chart configuration

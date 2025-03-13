@@ -84,12 +84,16 @@ spec:
                   name: {{ printf "%s-%s" .Release.Name "externaldb" }}
                   key: db-password
           {{- end }}
-          {{- if .Values.app.key }}
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ printf "%s-%s" .Release.Name "app" }}
                   key: app-key
+            - name: APP_URL
+              value: {{ required "value app.url is required" .Values.app.url }}
+          {{- if .Values.externalDatabase.tlsCert }}
+            - name: MYSQL_ATTR_SSL_CA
+              value: /etc/mysql/mysql.cert
           {{- end }}
           {{- range $key, $value := .Values.env }}
             - name: {{ $key | upper | replace "." "_" }}
@@ -100,6 +104,11 @@ spec:
             mountPath: /var/www/bookstack/public/uploads
           - name: storage
             mountPath: /var/www/bookstack/storage/uploads
+          {{- if .Values.externalDatabase.tlsCert }}
+          - name: mysql-cert-file
+            mountPath: /etc/mysql/
+            readOnly: true
+          {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
       volumes:
@@ -114,6 +123,13 @@ spec:
         {{- if .Values.persistence.storage.enabled }}
           persistentVolumeClaim:
             claimName: {{ .Values.persistence.storage.existingClaim | default (printf "%s-%s" (include "bookstack.fullname" .) "storage") }}
+        {{- else }}
+          emptyDir: {}
+        {{- end }}
+        - name: mysql-cert-file
+        {{- if .Values.externalDatabase.tlsCert }}
+          secret:
+            secretName: {{ printf "%s-%s" .Release.Name "cert"  }}
         {{- else }}
           emptyDir: {}
         {{- end -}}
