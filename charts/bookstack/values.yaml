@@ -17,10 +17,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-app:
-  key: ""
-  url: ""
-
 serviceAccount:
   # Specifies whether a ServiceAccount should be created
   create: true
@@ -69,9 +65,11 @@ tolerations: []
 
 affinity: {}
 
+
 app:
   # Laravel APP_KEY. Generate one with `php artisan key:generate` and put here if you want a static key.
-  key:
+  key: ""
+  url: ""
 
 env: {}
 
